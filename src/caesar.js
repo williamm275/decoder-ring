@@ -4,15 +4,38 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  // you can add any code you want within this function scope
-
   function caesar(input, shift, encode = true) {
-    // your solution code here
     if (!shift || shift === 0 || shift > 25 || shift < -25) {
       return false;
     }
-  }
 
+    let lowerCaseInput = input.toLowerCase();
+    let alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+    let encodeMessage = "";
+    let decodeMessage = "";
+
+    for (let i = 0; i < lowerCaseInput.length; i++) {
+      let currentLetter = lowerCaseInput[i];
+      if (alphabet.indexOf(currentLetter) < 0) {
+        encodeMessage += currentLetter;
+        continue;
+      }
+
+      let currentIndex = alphabet.indexOf(currentLetter);
+      let newIndex;
+      newIndex = currentIndex + shift;
+      if (newIndex > 26) newIndex = newIndex - 26;
+      if (newIndex < 0) newIndex = newIndex + 26;
+
+      encodeMessage += alphabet[newIndex];
+    }
+
+    if (encode === false) {
+      let reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba".split("");
+      return reverseAlphabet;
+    }
+    return encodeMessage;
+  }
   return {
     caesar,
   };
