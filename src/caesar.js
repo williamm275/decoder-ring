@@ -31,8 +31,24 @@ const caesarModule = (function () {
     }
 
     if (encode === false) {
-      let reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba".split("");
-      return reverseAlphabet;
+      let reverseAlphabet = alphabet.reverse();
+
+      for (let i = 0; i < lowerCaseInput.length; i++) {
+        let currentLetter = lowerCaseInput[i];
+        if (reverseAlphabet.indexOf(currentLetter) < 0) {
+          decodeMessage += currentLetter;
+          continue;
+        }
+
+        let currentIndex = reverseAlphabet.indexOf(currentLetter);
+        let newIndex
+        newIndex = currentIndex + shift;
+        if (newIndex > 25) newIndex = newIndex - 26;
+        if (newIndex < 0) newIndex = newIndex + 26;
+
+      decodeMessage += reverseAlphabet[newIndex];
+      }
+      return decodeMessage;
     }
     return encodeMessage;
   }
