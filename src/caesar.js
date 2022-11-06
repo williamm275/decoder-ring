@@ -24,7 +24,7 @@ const caesarModule = (function () {
       let currentIndex = alphabet.indexOf(currentLetter);
       let newIndex;
       newIndex = currentIndex + shift;
-      if (newIndex > 26) newIndex = newIndex - 26;
+      if (newIndex > 25) newIndex = newIndex - 26;
       if (newIndex < 0) newIndex = newIndex + 26;
 
       encodeMessage += alphabet[newIndex];
