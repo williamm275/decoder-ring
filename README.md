@@ -9,3 +9,6 @@ This project is designed to test the ability to build complex algorithms. It wil
 
 ## Tools Used:
 JavaScript
+
+---
+This project is still in progress. I am working on the Polybius Square and Substitution cipher side of this project.
